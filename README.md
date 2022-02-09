@@ -22,29 +22,29 @@ developing heart failure to advanced heart failure.
 
 The data set called “Heart Diseases” from University of California Irvine consists of 4 databases
 of heart disease patients from Cleveland, Hungary, Switzerland, and the VA Long Beach. This
-dataset mainly consists of patient’s,
+dataset mainly consists of patient’s, <br><br>
 ● Age <br>
-● Gender
-● Chest Pain Type (#cp)
--- Value 1: Typical Angina
--- Value 2: Atypical Angina
--- Value 3: Non-Anginal Pain
--- Value 4: Asymptomatic
-● Resting Blood Pressure(#trestbps)
-● Serum Cholesterol in mg/dl (#chol)
-● Fasting Blood Sugar (#fbs)
--- fbs > 120 mg/dl (1 = true; 0 = false)
-● Resting Electrocardiographic Results (#restecg)
-● Maximum Heart Rate Achieved(#thalach)
-● Exercise Induced Angina (#exang)
--- 1 = yes; 0 = no
-● ST Depression Induced by Exercise Relative to Rest (#oldpeak)
-● The Slope of the Peak Exercise ST Segment(#slope)
--- Value 1: upsloping
--- Value 2: flat
--- Value 3: down sloping
-● Number of Major Vessels (0-3) Colored by Fluoroscopy (#ca)
-3 = Normal; 6 = Fixed Defect; 7 = Reversible Defect (#thal)
-● Diagnosis of Heart Disease (angiographic disease status) (#num) - The Predicted Attribute.
--- Value 0: < 50% diameter narrowing
--- Value 1: > 50% diameter narrowing
+● Gender <br>
+● Chest Pain Type (#cp) <br>
+-- Value 1: Typical Angina <br>
+-- Value 2: Atypical Angina <br>
+-- Value 3: Non-Anginal Pain <br>
+-- Value 4: Asymptomatic <br>
+● Resting Blood Pressure(#trestbps)<br>
+● Serum Cholesterol in mg/dl (#chol)<br>
+● Fasting Blood Sugar (#fbs)<br>
+-- fbs > 120 mg/dl (1 = true; 0 = false)<br>
+● Resting Electrocardiographic Results (#restecg)<br>
+● Maximum Heart Rate Achieved(#thalach)<br>
+● Exercise Induced Angina (#exang)<br>
+-- 1 = yes; 0 = no<br>
+● ST Depression Induced by Exercise Relative to Rest (#oldpeak)<br>
+● The Slope of the Peak Exercise ST Segment(#slope)<br>
+-- Value 1: upsloping<br>
+-- Value 2: flat<br>
+-- Value 3: down sloping<br>
+● Number of Major Vessels (0-3) Colored by Fluoroscopy (#ca)<br>
+3 = Normal; 6 = Fixed Defect; 7 = Reversible Defect (#thal)<br>
+● Diagnosis of Heart Disease (angiographic disease status) (#num) - The Predicted Attribute.<br>
+-- Value 0: < 50% diameter narrowing<br>
+-- Value 1: > 50% diameter narrowing<br>
