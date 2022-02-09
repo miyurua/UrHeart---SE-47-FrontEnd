@@ -23,7 +23,7 @@ developing heart failure to advanced heart failure.
 The data set called “Heart Diseases” from University of California Irvine consists of 4 databases
 of heart disease patients from Cleveland, Hungary, Switzerland, and the VA Long Beach. This
 dataset mainly consists of patient’s,
-● Age \n
+● Age <br>
 ● Gender
 ● Chest Pain Type (#cp)
 -- Value 1: Typical Angina
