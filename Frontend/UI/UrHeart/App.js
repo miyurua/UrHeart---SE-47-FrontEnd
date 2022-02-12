@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
@@ -28,31 +27,12 @@ export default function App() {
     <View style={styles.screen}>
       <StatusBar style="auto" />
       {container}
-=======
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
-import LoginScreen from './Screens/LoginScreen';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <LoginScreen />
->>>>>>> Stashed changes
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-<<<<<<< Updated upstream
   screen: {
     flex: 1,
-=======
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
->>>>>>> Stashed changes
   },
 });
