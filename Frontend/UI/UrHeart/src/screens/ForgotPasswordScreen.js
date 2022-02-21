@@ -23,10 +23,12 @@ const ForgotPasswordScreen = () => {
 
   const onSendPressed = () => {
     navigation.navigate("NewPassword");
+    setUsername("");
   };
 
   const onSignInPress = () => {
     navigation.navigate("SignIn");
+    setUsername("");
   };
 
   return (

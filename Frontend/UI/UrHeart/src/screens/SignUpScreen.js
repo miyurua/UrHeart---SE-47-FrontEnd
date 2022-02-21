@@ -29,24 +29,40 @@ const SignUpScreen = () => {
 
   const onRegisterPressed = () => {
     navigation.navigate("ConfirmEmail");
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setPasswordRepeat("");
   };
 
   const onSignInPressed = () => {
     navigation.navigate("SignIn");
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setPasswordRepeat("");
   };
 
   const onSignInFacebook = () => {
     console.warn("onSignInFacebook");
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setPasswordRepeat("");
   };
 
   const onSignInGoogle = () => {
     console.warn("onSignInGoogle");
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setPasswordRepeat("");
   };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={[styles.container, { paddingTop: height * 0.08 }]}>
-        <View style={[styles.top, { paddingTop: height * 0.02 }]}>
+        <View style={[styles.top, { paddingTop: height * 0.05 }]}>
           <Text style={[styles.title, { fontSize: height * 0.04 }]}>
             Create an account
           </Text>
@@ -177,11 +193,9 @@ const styles = StyleSheet.create({
     maxHeight: 50,
   },
   top: {
-    flex: 1,
     alignItems: "center",
     width: "100%",
     paddingHorizontal: 20,
-    justifyContent: "center",
   },
   bottom: {
     alignItems: "center",

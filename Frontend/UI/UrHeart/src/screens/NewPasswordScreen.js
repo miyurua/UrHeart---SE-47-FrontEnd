@@ -24,10 +24,14 @@ const NewPasswordScreen = () => {
 
   const onSubmitPressed = () => {
     navigation.navigate("Home");
+    setCode("");
+    setNewPassword("");
   };
 
   const onSignInPress = () => {
     navigation.navigate("SignIn");
+    setCode("");
+    setNewPassword("");
   };
 
   return (
@@ -53,6 +57,7 @@ const NewPasswordScreen = () => {
             placeholder="Enter your new password"
             value={newPassword}
             setValue={setNewPassword}
+            secureTextEntry
             style={{
               height: buttonHeight,
               marginVertical: buttonMargin,

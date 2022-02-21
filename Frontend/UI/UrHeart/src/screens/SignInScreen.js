@@ -27,22 +27,27 @@ const SignInScreen = () => {
 
   const onSignInPressed = () => {
     navigation.navigate("Home");
+    setPassword("");
   };
 
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
+    setPassword("");
   };
 
   const onSignUpPress = () => {
     navigation.navigate("SignUp");
+    setPassword("");
   };
 
   const onSignInFacebook = () => {
     console.warn("onSignInFacebook");
+    setPassword("");
   };
 
   const onSignInGoogle = () => {
     console.warn("onSignInGoogle");
+    setPassword("");
   };
 
   return (
@@ -159,7 +164,6 @@ const styles = StyleSheet.create({
     maxHeight: 270,
   },
   top: {
-    flex: 1,
     alignItems: "center",
     width: "100%",
     paddingHorizontal: 20,

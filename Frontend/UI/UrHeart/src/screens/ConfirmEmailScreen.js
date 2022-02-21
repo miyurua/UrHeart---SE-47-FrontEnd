@@ -23,14 +23,17 @@ const ConfirmEmailScreen = () => {
 
   const onConfirmPressed = () => {
     navigation.navigate("Home");
+    setCode("");
   };
 
   const onSignInPress = () => {
     navigation.navigate("SignIn");
+    setCode("");
   };
 
   const onResendPress = () => {
     console.warn("onResendPress");
+    setCode("");
   };
 
   return (
@@ -111,10 +114,11 @@ const styles = StyleSheet.create({
   },
   top: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: "center",
     width: "100%",
     paddingHorizontal: 20,
-    justifyContent: 'center'
+    
   },
   bottom: {
     alignItems: "center",
