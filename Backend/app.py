@@ -20,7 +20,7 @@ def medical_info_page():
 
 @app.route("/doctors")
 def doctors_page():
-    return {"Doctors List": ["Doctor ID", "Doctor Name", "Hospital"]}
+    return {"Doctors List": ["Doctor ID", "Doctor Name", "Hospital", "Contact"]}
 
 
 @app.route("/ECG-Page")
