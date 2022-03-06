@@ -25,7 +25,7 @@ def doctors_page():
 
 @app.route("/ECG-Page")
 def ecg_page():
-    return {"ECG Upload": ["Browse"]}, 
+    return {"ECG Upload": ["Browse"]}, 200
   
 @app.route("/About")
 def about_page():
@@ -33,4 +33,4 @@ def about_page():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
