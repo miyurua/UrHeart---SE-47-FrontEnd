@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="746b1bf2-3fb1-40bf-a2fb-925a71b67df3" name="Changes" comment="">
+    <list default="true" id="746b1bf2-3fb1-40bf-a2fb-925a71b67df3" name="Changes" comment="Fixed Attribute Error">
+      <change afterPath="$PROJECT_DIR$/Backend/resources/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/database/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/resources/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/patient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/resources/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +237,7 @@
       <workItem from="1646472694639" duration="2549000" />
       <workItem from="1646584603992" duration="2671000" />
       <workItem from="1646630932907" duration="10625000" />
-      <workItem from="1646666771504" duration="12854000" />
+      <workItem from="1646666771504" duration="20384000" />
     </task>
     <task id="LOCAL-00001" summary="imported Flask">
       <created>1646394763929</created>
@@ -305,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646668577517</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed Attribute Error">
+      <created>1646810150612</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1646810150612</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

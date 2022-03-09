@@ -8,8 +8,7 @@ class PatientsAPI(Resource):
         patients = Patient.objects().to_json()
         return Response(patients, mimetype="application/json", status=200)
     
-    def post(self):
-               
+    def post(self):               
         body = request.get_json()
         patient = Patient(**body).save()
         id = patient.id
@@ -20,7 +19,7 @@ class PatientAPI(Resource):
     def put(self, id):
         body = request.get_json()
         Patient.objects.get(id=id).update(**body)
-        return '', 200
+        return '', 200 
     
     def delete(self, id):
         patient = Patient.objects.get(id=id).delete()
