@@ -17,5 +17,3 @@ class Patient(db.Document):
     num_major_vessels = db.FloatField(required=True)
     thalassemia = db.FloatField(required=True)
     
-
-
