@@ -211,11 +211,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Flask" />
-      <item itemvalue="Python.app (1)" />
-      <item itemvalue="Python.app" />
-      <item itemvalue="Python.main" />
       <item itemvalue="Flask server.Flask" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.app" />
+      <item itemvalue="Python.app (1)" />
+      <item itemvalue="Python.Flask" />
     </list>
     <recent_temporary>
       <list>
