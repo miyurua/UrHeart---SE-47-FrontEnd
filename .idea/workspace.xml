@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="746b1bf2-3fb1-40bf-a2fb-925a71b67df3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/.env" afterDir="false" />
+    <list default="true" id="746b1bf2-3fb1-40bf-a2fb-925a71b67df3" name="Changes" comment="Added Authentication">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_4_2022_5_25_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_4_2022_5_25_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2022_2_56_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2022_2_56_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2022_8_56_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2022_8_56_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]3/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]4/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]5/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_5.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/database/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/resources/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/resources/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/patient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/resources/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +255,8 @@
       <workItem from="1646630932907" duration="10625000" />
       <workItem from="1646666771504" duration="22668000" />
       <workItem from="1646891529162" duration="1538000" />
-      <workItem from="1646895004416" duration="690000" />
+      <workItem from="1646895004416" duration="10375000" />
+      <workItem from="1647441994628" duration="4795000" />
     </task>
     <task id="LOCAL-00001" summary="imported Flask">
       <created>1646394763929</created>
@@ -322,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646849121351</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added Authentication">
+      <created>1646896621054</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1646896621054</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
