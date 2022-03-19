@@ -19,6 +19,7 @@ class Patient(db.Document):
     thalassemia = db.FloatField(required=True)
 
 
+# New user document created everytime a new user signs up
 class User(db.Document):
     email = db.EmailField(required=True, unique=True)
     password = db.StringField(required=True, min_length=8)
