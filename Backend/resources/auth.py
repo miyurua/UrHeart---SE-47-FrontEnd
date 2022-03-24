@@ -1,5 +1,4 @@
-from flask import request
-from flask import Response, request
+from flask import Response, request, Blueprint, redirect
 from flask_jwt_extended import create_access_token
 from database.models import User
 from flask_restful import Resource

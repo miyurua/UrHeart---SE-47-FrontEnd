@@ -1,28 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="746b1bf2-3fb1-40bf-a2fb-925a71b67df3" name="Changes" comment="Added Authentication">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_4_2022_5_25_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_4_2022_5_25_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2022_2_56_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2022_2_56_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2022_8_56_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2022_8_56_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]3/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]4/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]5/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_5.xml" beforeDir="false" />
+    <list default="true" id="746b1bf2-3fb1-40bf-a2fb-925a71b67df3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/Notebook/ML_model_02(Using_Random_Forest_Classifier).ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Notebook/ML_model_02(Using_Random_Forest_Classifier).ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/database/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/resources/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/resources/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/patient.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/resources/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/routes.py" afterDir="false" />
@@ -75,9 +59,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Desktop/practice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Backend/Notebook" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\miyur\OneDrive\Documents\Level 5 (2021)\SDGP\Codex---SE47\Backend\Notebook" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\miyur\OneDrive\Documents\Level 5 (2021)\SDGP\Codex---SE47\Notebook" />
       <recent name="C:\Users\miyur\OneDrive\Documents\Level 5 (2021)\SDGP\Codex---SE47" />
@@ -256,7 +243,11 @@
       <workItem from="1646666771504" duration="22668000" />
       <workItem from="1646891529162" duration="1538000" />
       <workItem from="1646895004416" duration="10375000" />
-      <workItem from="1647441994628" duration="4795000" />
+      <workItem from="1647441994628" duration="7546000" />
+      <workItem from="1647693473998" duration="25083000" />
+      <workItem from="1648092502923" duration="894000" />
+      <workItem from="1648094092688" duration="9255000" />
+      <workItem from="1648136123323" duration="5137000" />
     </task>
     <task id="LOCAL-00001" summary="imported Flask">
       <created>1646394763929</created>
@@ -349,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646896621054</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added Authentication">
+      <created>1647513080884</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1647513080884</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,17 +361,6 @@
     <MESSAGE value="Fixed Attribute Error" />
     <MESSAGE value="Added Authentication" />
     <option name="LAST_COMMIT_MESSAGE" value="Added Authentication" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Codex___SE47$app.coverage" NAME="app Coverage Results" MODIFIED="1646395314459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
