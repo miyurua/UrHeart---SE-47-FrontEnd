@@ -11,6 +11,7 @@ flask-bcrypt = "*"
 flask-jwt-extended = "*"
 python-dotenv = "*"
 numpy = "*"
+sklearn = "*"
 
 [dev-packages]
 

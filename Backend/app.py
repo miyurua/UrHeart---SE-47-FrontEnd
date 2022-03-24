@@ -24,7 +24,7 @@ data_arg = reqparse.RequestParser()
 data_arg.add_argument("id", type=str)
 
 # Loading ML Model
-model = pickle.load(open('heart_disease_pred_model', 'rb'))
+model = pickle.load(open('Notebook/heart_disease_pred_model', 'rb'))
 
 
 class Predict(Resource):
