@@ -45,6 +45,7 @@ class Predict(Resource):
 
 api.add_resource(Predict, '/api/predict')
 # ---------------------------------------
+
 """
 @app.route('/result', methods=['POST', 'GET'])
 def result():

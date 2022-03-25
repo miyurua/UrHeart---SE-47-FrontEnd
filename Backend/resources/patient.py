@@ -9,7 +9,7 @@ class PatientsAPI(Resource):
         patients = Patient.objects().to_json()
         return Response(patients, mimetype="application/json", status=200)
 
-    @jwt_required()
+
     def post(self):               
         body = request.get_json()
         patient = Patient(**body).save()
@@ -18,13 +18,13 @@ class PatientsAPI(Resource):
     
 
 class PatientAPI(Resource):
-    @jwt_required()
+    
     def put(self, id):
         body = request.get_json()
         Patient.objects.get(id=id).update(**body)
         return '', 200 
 
-    @jwt_required()
+   
     def delete(self, id):
         patient = Patient.objects.get(id=id).delete()
         return '', 200

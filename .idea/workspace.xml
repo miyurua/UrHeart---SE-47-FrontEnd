@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/Backend/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/resources/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/resources/patient.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,7 @@
       <recent name="C:\Users\miyur\OneDrive\Documents\Level 5 (2021)\SDGP\Codex---SE47" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.random">
     <configuration name="Flask" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -177,6 +178,38 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="random" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Backend/database" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Backend/database/random.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Flask" type="Python.FlaskServer" nameIsGenerated="true">
       <option name="application" value="flask" />
       <option name="flaskDebug" value="true" />
@@ -215,9 +248,11 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.Flask" />
       <item itemvalue="Python.app (1)" />
+      <item itemvalue="Python.random" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.random" />
         <item itemvalue="Python.Flask" />
         <item itemvalue="Python.app (1)" />
       </list>
@@ -243,7 +278,7 @@
       <workItem from="1647693473998" duration="25083000" />
       <workItem from="1648092502923" duration="894000" />
       <workItem from="1648094092688" duration="9255000" />
-      <workItem from="1648136123323" duration="7759000" />
+      <workItem from="1648136123323" duration="14645000" />
     </task>
     <task id="LOCAL-00001" summary="imported Flask">
       <created>1646394763929</created>
@@ -350,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648143783486</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added Authentication">
+      <created>1648147830751</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1648147830751</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
