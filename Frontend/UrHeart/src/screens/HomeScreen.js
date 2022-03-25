@@ -43,7 +43,7 @@ const HomeScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={[styles.container, { paddingTop: height * 0.08 }]}>
-        <View style={[styles.header, { height: height * 0.1 }]}>
+        <View style={[styles.header, { height: height * 0.08 }]}>
           <TouchableOpacity
             style={{ height: height * 0.03, maxHeight: 55, width: "8%" }}
             onPress={onMenuPressed}
@@ -64,7 +64,7 @@ const HomeScreen = () => {
           </View>
         </View>
         
-        <View style={[styles.main, { height: height * 0.8 }]}>
+        <View style={[styles.main, { height: height * 0.889 }]}>
           <View style={[styles.top, { paddingBottom: height * 0.04 }]}>
             <Card
               Text="Predict with manual data"

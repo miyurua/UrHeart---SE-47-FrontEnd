@@ -30,7 +30,7 @@ const DoctorListScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={[styles.container, { paddingTop: height * 0.08 }]}>
-        <View style={[styles.header, { height: height * 0.1 }]}>
+        <View style={[styles.header, { height: height * 0.08 }]}>
           <TouchableOpacity
             style={{ height: height * 0.03, maxHeight: 55, width: "8%" }}
             onPress={onMenuPressed}
@@ -51,7 +51,7 @@ const DoctorListScreen = () => {
           </View>
         </View>
 
-        <ScrollView style={{height: height * 0.84, width: '100%', marginTop: 30}}>
+        <ScrollView style={{height: height * 0.889, width: '100%', marginTop: 25}}>
           <View style={{width: '100%', alignItems: 'center'}}>
             <Card style={{ width: cardWidth, height: cardHeight, margin: cardMargin }}></Card>
             <Card style={{ width: cardWidth, height: cardHeight, margin: cardMargin }}></Card>
