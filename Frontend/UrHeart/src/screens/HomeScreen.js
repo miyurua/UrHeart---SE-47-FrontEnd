@@ -29,7 +29,7 @@ const HomeScreen = () => {
   };
 
   const onWithDataPressed = () => {
-    console.warn('WithData')
+    navigation.navigate('WithData')
   };
 
   const onWithECGPressed = () => {

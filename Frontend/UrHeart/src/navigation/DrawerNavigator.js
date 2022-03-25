@@ -5,6 +5,7 @@ import DoctorListScreen from "../screens/DoctorListScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import HomeScreen from "../screens/HomeScreen";
 import DrawerContent from "../screens/DrawerContent";
+import PredictManualData from "../screens/PredictManualData";
 
 const Drawer = createDrawerNavigator();
 
@@ -37,6 +38,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="MainHome" component={HomeScreen} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
       <Drawer.Screen name="DoctorList" component={DoctorListScreen} />
+      <Drawer.Screen name="WithData" component={PredictManualData} />
       <Drawer.Screen name="History" component={HomeScreen} />
       <Drawer.Screen name="Settings" component={HomeScreen} />
     </Drawer.Navigator>
