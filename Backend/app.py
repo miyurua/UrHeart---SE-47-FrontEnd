@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 # from dotenv import load_dotenv
 # load_dotenv()
-from flask_bcrypt import Bcrypt
+#from flask_bcrypt import Bcrypt
 from database.db import initialize_db
 from flask_restful import Resource, Api, reqparse
 from resources.routes import initialize_routes
