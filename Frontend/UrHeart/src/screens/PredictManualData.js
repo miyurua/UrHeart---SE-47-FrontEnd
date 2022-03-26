@@ -40,7 +40,35 @@ const DoctorListScreen = () => {
   };
 
   const onProcessPress = () => {
-    
+    let collection = {};
+    (collection.age = age),
+    (collection.gender = Gender),
+    (collection.chestPainType = ChestPainType),
+    (collection.restingBloodPressure = RestingBloodPressure),
+    (collection.SerumCholestrol = SerumCholestrol),
+    (collection.FastingBloodSugar = FastingBloodSugar),
+    (collection.RestingECGResults = RestingECGResults),
+    (collection.MaxHeartRateAchieved = MaxHeartRateAchieved),
+    (collection.ExerciseInducedAngina = ExerciseInducedAngina),
+    (collection.STDepressionInduced = STDepressionInduced);
+    console.warn(collection);
+
+    const url = "https://example.com/profile";
+
+    fetch(url, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(collection),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
