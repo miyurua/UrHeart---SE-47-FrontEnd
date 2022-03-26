@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import Navigation from './src/navigation/Navigation';
-import DrawerNavigator from './src/navigation/DrawerNavigator';
 
 export default function App() {
   return (

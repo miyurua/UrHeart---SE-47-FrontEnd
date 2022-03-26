@@ -30,8 +30,6 @@ const config = {
 
 const screenOptionStyle = {
   headerShown: false,
-  gestureEnabled: true,
-  gestureDirection: "horizontal",
   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   transitionSpec: { open: config, close: config },
 };
