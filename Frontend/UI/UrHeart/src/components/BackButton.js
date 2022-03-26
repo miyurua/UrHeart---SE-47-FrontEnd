@@ -3,6 +3,8 @@ import { Image, TouchableOpacity, StyleSheet } from "react-native";
 import BACK from "../../assets/images/BackArrow.png";
 
 const BackButton = (props) => {
+
+  // delete this comment
   return (
     <TouchableOpacity
       {...props}
