@@ -33,7 +33,7 @@ const HomeScreen = () => {
   };
 
   const onWithECGPressed = () => {
-    console.warn('WithECG')
+    navigation.navigate('WithECG')
   };
 
   const onDocListPressed = () => {
