@@ -23,6 +23,7 @@ const ConfirmEmailScreen = () => {
 
   const onConfirmPressed = () => {
     navigation.navigate("Home");
+    navigation.navigate("dnav");
     setCode("");
   };
 

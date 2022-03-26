@@ -39,6 +39,7 @@ const SignInScreen = () => {
       Global.SignInState = "Home";
       Global.UserName = username;
       navigation.navigate("Home");
+      navigation.navigate("dnav");
       setPassword("");
       setUsernameError("Username");
       setPasswordError("Password");
