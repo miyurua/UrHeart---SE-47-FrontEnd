@@ -15,14 +15,16 @@ const DrawerContent = (props) => {
     navigation.navigate("SignIn");
   };
 
+  const onHomePressed = () => {
+    props.navigation.navigate("MainHome");
+  };
+
   const onProfilePressed = () => {
-    console.warn("Profile");
-    // props.navigation.navigate("Profile");
+    props.navigation.navigate("Profile");
   };
 
   const onDoctorListPressed = () => {
-    console.warn("DoctorList");
-    // props.navigation.navigate("DoctorList");
+    props.navigation.navigate("DoctorList");
   };
 
   const onHistoryPressed = () => {
@@ -46,7 +48,7 @@ const DrawerContent = (props) => {
                 marginTop: 15,
               }}
             >
-              <Avatar.Text label={Global.IconText} size={50} />
+              <Avatar.Text label={Global.UserName.substring(0, 2)} size={50} />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>
                 <Title style={styles.title}>{Global.UserName}</Title>
                 <Caption style={styles.caption}>{Global.Email}</Caption>
@@ -54,6 +56,16 @@ const DrawerContent = (props) => {
             </View>
           </View>
         </View>
+
+        <Drawer.Section style={styles.drawerSection}>
+          <DrawerItem
+            icon={({ color, size }) => (
+              <Icon name="home-outline" color={color} size={size} />
+            )}
+            label="Home"
+            onPress={onHomePressed}
+          />
+        </Drawer.Section>
 
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
@@ -124,33 +136,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 14,
   },
-  row: {
-    marginTop: 20,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  section: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginRight: 15,
-  },
-  paragraph: {
-    fontWeight: "bold",
-    marginRight: 3,
-  },
   drawerSection: {
     marginTop: 15,
+    borderBottomColor: "#f4f4f4",
+    borderBottomWidth: 1,
   },
   bottomDrawerSection: {
     marginBottom: 15,
     borderTopColor: "#f4f4f4",
     borderTopWidth: 1,
-  },
-  preference: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingVertical: 12,
-    paddingHorizontal: 16,
   },
 });
 

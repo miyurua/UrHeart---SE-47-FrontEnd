@@ -3,11 +3,12 @@ import {
   TouchableWithoutFeedback,
   View,
   Image,
-  Text,
   StyleSheet,
   Keyboard,
   useWindowDimensions,
 } from "react-native";
+
+import Logo from "../../assets/images/logo.png";
 import FACEBOOK from "../../assets/images/Fb.png";
 import GOOGLE from "../../assets/images/Google.png";
 import CustomInput from "../components/CustomInput";
@@ -16,7 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import Global from "../global";
 
-const SignUpScreen = () => {
+const SignInScreen = () => {
   const navigation = useNavigation();
 
   const { height } = useWindowDimensions();
@@ -25,88 +26,59 @@ const SignUpScreen = () => {
   const buttonMargin = (height * 0.018) / 2;
 
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordRepeat, setPasswordRepeat] = useState("");
 
   const [usernameError, setUsernameError] = useState("Username");
-  const [emailError, setEmailError] = useState("Email");
   const [passwordError, setPasswordError] = useState("Password");
-  const [passwordRepeatError, setPasswordRepeatError] = useState("Repeat Password");
 
-  const onRegisterPressed = () => {
-    if (username != "" && email != "" && password != "" && password === passwordRepeat) {
-      Global.SignInState = "Home";
-      Global.UserName = username;
-      Global.IconText = username.substring(0, 2);
-      Global.Email = email;
-      Global.Password = password;
-      navigation.navigate("ConfirmEmail");
-      setUsername("");
-      setEmail("");
-      setPassword("");
-      setPasswordRepeat("");
-      setUsernameError("Username");
-      setEmailError("Email");
-      setPasswordError("Password");
-      setPasswordRepeatError("Repeat Password");
-    } else if (username === "" || email === "" || password === ""){
+  const onSignInPressed = () => {
+    if (username === "" || password === "") {
       setUsernameError("Enter Username");
-      setEmailError("Enter Email");
       setPasswordError("Enter Password");
     } else {
-      setPasswordRepeat("");
-      setPasswordRepeatError("Check your password & try again");
+      Global.SignInState = "Home";
+      Global.UserName = username;
+      navigation.navigate("Home");
+      setPassword("");
+      setUsernameError("Username");
+      setPasswordError("Password");
     }
   };
 
-  const onSignInPressed = () => {
-    navigation.navigate("SignIn");
-    setUsername("");
-    setEmail("");
+  const onForgotPasswordPressed = () => {
+    navigation.navigate("ForgotPassword");
     setPassword("");
-    setPasswordRepeat("");
+  };
+
+  const onSignUpPress = () => {
+    navigation.navigate("SignUp");
+    setPassword("");
   };
 
   const onSignInFacebook = () => {
     console.warn("onSignInFacebook");
-    setUsername("");
-    setEmail("");
     setPassword("");
-    setPasswordRepeat("");
   };
 
   const onSignInGoogle = () => {
     console.warn("onSignInGoogle");
-    setUsername("");
-    setEmail("");
     setPassword("");
-    setPasswordRepeat("");
   };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={[styles.container, { paddingTop: height * 0.08 }]}>
-        <View style={[styles.top, { paddingTop: height * 0.05 }]}>
-          <Text style={[styles.title, { fontSize: height * 0.04 }]}>
-            Create an account
-          </Text>
+      <View style={[styles.container, { paddingTop: height * 0.05 }]}>
+        <View style={styles.top}>
+          <Image
+            source={Logo}
+            style={[styles.logo, { height: height * 0.3 }]}
+            resizeMode="contain"
+          />
 
           <CustomInput
             placeholder={usernameError}
             value={username}
             setValue={setUsername}
-            style={{
-              height: buttonHeight,
-              marginVertical: buttonMargin,
-              fontSize: fontHeight,
-            }}
-          />
-
-          <CustomInput
-            placeholder={emailError}
-            value={email}
-            setValue={setEmail}
             textColor="white"
             style={{
               height: buttonHeight,
@@ -114,7 +86,6 @@ const SignUpScreen = () => {
               fontSize: fontHeight,
             }}
           />
-
           <CustomInput
             placeholder={passwordError}
             value={password}
@@ -128,29 +99,24 @@ const SignUpScreen = () => {
             }}
           />
 
-          <CustomInput
-            placeholder={passwordRepeatError}
-            value={passwordRepeat}
-            setValue={setPasswordRepeat}
-            textColor="black"
-            secureTextEntry
-            style={{
-              height: buttonHeight,
-              marginVertical: buttonMargin,
-              fontSize: fontHeight,
-            }}
-          />
-
           <CustomButton
-            text="Register"
+            text="Sign In"
             fontSize={fontHeight}
             color="white"
-            onPress={onRegisterPressed}
+            onPress={onSignInPressed}
             style={{
               backgroundColor: "#6600ff",
               height: buttonHeight,
               marginVertical: buttonMargin,
             }}
+          />
+
+          <CustomButton
+            text="Forgot password?"
+            color="gray"
+            fontSize={fontHeight}
+            onPress={onForgotPasswordPressed}
+            style={{ height: buttonHeight, marginVertical: buttonMargin }}
           />
 
           <CustomButton
@@ -198,10 +164,10 @@ const SignUpScreen = () => {
 
         <View style={styles.bottom}>
           <CustomButton
-            text="Have an account? Sign in"
+            text="Don't have an account? Create one"
             color="gray"
             fontSize={fontHeight}
-            onPress={onSignInPressed}
+            onPress={onSignUpPress}
             style={{
               height: buttonHeight,
               marginVertical: buttonMargin,
@@ -219,15 +185,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  title: {
-    fontWeight: "bold",
-    color: "#051C60",
-    margin: 10,
-  },
-  back: {
-    width: "6%",
-    maxWidth: 50,
-    maxHeight: 50,
+  logo: {
+    width: "70%",
+    maxWidth: 240,
+    maxHeight: 270,
   },
   top: {
     alignItems: "center",
@@ -241,4 +202,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default SignInScreen;
