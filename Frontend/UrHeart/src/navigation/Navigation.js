@@ -42,7 +42,8 @@ const Navigation = () => {
       <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
-      <Stack.Screen name="Home" component={HomeScreen, DrawerNavigator} />
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="dnav" component={ DrawerNavigator} />
     </Stack.Navigator>
   );
 };
