@@ -6,7 +6,7 @@ test_data = {
     },
     "body": {
         "age": "45",
-        "sex": "85",
+        "sex": "1",
         "chestPainType": "25",
         "restingBP": "65",
         "cholestrol": "45",
@@ -29,3 +29,4 @@ list = print_json['body']
 
 
 input_data = (float(list['age']), float(list['sex']), float(list['chestPainType']),	float(list['restingBP']), float(list['cholestrol']), float(list['fastingBloodSugar']), float(list['restingECG']), float(list['maxHeartRate']), float(list['exerciseAngina']),	float(list['oldpeak']), float(list['STslope']))
+print(input_data)
