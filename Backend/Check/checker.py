@@ -11,7 +11,7 @@ import pandas as pd
 import seaborn as sns
 
 #   loading the ML model
-model = pickle.load(open('../Notebook/model.pkl', 'rb'))
+model = pickle.load(open('Notebook/model.pkl', 'rb'))
 # x = (37, 1, 4, 140, 207, 0, 0,	130, 1,	1.5, 2)
 # input_data = (37, 1, 4,	140, 207, 0, 0,	130, 1,	1.5, 2)
 #input_data = (48, 0, 2,	120, 284, 0, 0, 120, 0,	0.0, 1)

@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Resource, Api, reqparse
 from werkzeug import Response
 from flask_mongoengine import MongoEngine
-from Backend.Check.checker import PredictionAPI
+import json
 from resources.routes import initialize_routes
 from resources.patient import PatientsAPI, PatientAPI
 from flask_cors import CORS
@@ -23,6 +23,20 @@ api = Api(app)
 def test():
     data = request.get_json()
     print(data.age)
+
+
+@app.route('/pred', methods = ['POST'])
+def pred():
+    body = request.json['body']
+    test_data = request.json
+    s1 = json.dumps(test_data)
+    print_json = json.loads(s1)
+    list = print_json['body']
+    input_data = (float(list['age']), float(list['sex']), float(list['chestPainType']),	float(list['restingBP']), float(list['cholestrol']), float(list['fastingBloodSugar']), float(list['restingECG']), float(list['maxHeartRate']), float(list['exerciseAngina']),	float(list['oldpeak']), float(list['STslope']))
+    print(input_data)
+    return jsonify(body)
+
+
 # if request.method == 'POST':
 
 # age = [i for i in request.form.values()]
