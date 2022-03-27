@@ -1,9 +1,13 @@
+from urllib import response
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api, reqparse
+from werkzeug import Response
+from flask_mongoengine import MongoEngine
 from resources.routes import initialize_routes
 from resources.patient import PatientsAPI, PatientAPI
 from flask_cors import CORS
 from database.db import initialize_db
+from database.models import Patient
 from Check import checker
 import os
 import numpy as np
@@ -98,7 +102,16 @@ def test():
 class CoreAPI(Resource):
     def get(self, id):
         try:
-            tester = Tester.objects().get(id=id).to_json()
+            tester = Patient.objects().get(id=id).to_json()
+            return Response(tester, mimetype="application/json", status=200)
+        except mongoengine.errors.ValidationError:
+            res = {
+                'error':'INVALID ID',
+                'status': 500
+            }
+            return res, 500
+
+
 
 
 
