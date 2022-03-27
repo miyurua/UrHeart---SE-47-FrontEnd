@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Resource, Api, reqparse
 from werkzeug import Response
 from flask_mongoengine import MongoEngine
+from Backend.Check.checker import PredictionAPI
 from resources.routes import initialize_routes
 from resources.patient import PatientsAPI, PatientAPI
 from flask_cors import CORS
@@ -110,10 +111,8 @@ class CoreAPI(Resource):
                 'status': 500
             }
             return res, 500
-
-
-
-
+    def prediction():
+        print("Prediction")          
 
 
 app.config['MONGODB_SETTINGS'] = {
