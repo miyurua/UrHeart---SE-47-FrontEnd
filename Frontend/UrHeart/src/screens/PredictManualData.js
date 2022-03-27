@@ -25,15 +25,16 @@ const DoctorListScreen = () => {
   const navigation = useNavigation();
 
   const [age, setAge] = useState("");
-  const [Gender, setGender] = useState("");
-  const [ChestPainType, setChestPainType] = useState("");
-  const [RestingBloodPressure, setRestingBloodPressure] = useState("");
-  const [SerumCholestrol, setSerumCholestrol] = useState("");
-  const [FastingBloodSugar, setFastingBloodSugar] = useState("");
-  const [RestingECGResults, setRestingECGResults] = useState("");
-  const [MaxHeartRateAchieved, setMaxHeartRateAchieved] = useState("");
-  const [ExerciseInducedAngina, setExerciseInducedAngina] = useState("");
-  const [STDepressionInduced, setSTDepressionInduced] = useState("");
+  const [sex, setSex] = useState("");
+  const [chestPainType, setChestPainType] = useState("");
+  const [restingBP, setRestingBP] = useState("");
+  const [cholestrol, setCholestrol] = useState("");
+  const [fastingBloodSugar, setFastingBloodSugar] = useState("");
+  const [restingECG, setRestingECG] = useState("");
+  const [maxHeartRate, setMaxHeartRate] = useState("");
+  const [exerciseAngina, setExerciseAngina] = useState("");
+  const [oldpeak, setOldpeak] = useState("");
+  const [STslope, setSTSlope] = useState("");
 
   const onMenuPressed = () => {
     navigation.toggleDrawer();
@@ -42,15 +43,16 @@ const DoctorListScreen = () => {
   const onProcessPress = () => {
     let collection = {};
     (collection.age = age),
-    (collection.gender = Gender),
-    (collection.chestPainType = ChestPainType),
-    (collection.restingBloodPressure = RestingBloodPressure),
-    (collection.SerumCholestrol = SerumCholestrol),
-    (collection.FastingBloodSugar = FastingBloodSugar),
-    (collection.RestingECGResults = RestingECGResults),
-    (collection.MaxHeartRateAchieved = MaxHeartRateAchieved),
-    (collection.ExerciseInducedAngina = ExerciseInducedAngina),
-    (collection.STDepressionInduced = STDepressionInduced);
+      (collection.sex = sex),
+      (collection.chestPainType = chestPainType),
+      (collection.restingBP = restingBP),
+      (collection.cholestrol = cholestrol),
+      (collection.fastingBloodSugar = fastingBloodSugar),
+      (collection.restingECG = restingECG),
+      (collection.maxHeartRate = maxHeartRate),
+      (collection.exerciseAngina = exerciseAngina),
+      (collection.oldpeak = oldpeak),
+      (collection.STslope = STslope);
     console.warn(collection);
 
     const url = "http://127.0.0.1:5000/test";
@@ -119,8 +121,8 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Gender"
-              value={Gender}
-              setValue={setGender}
+              value={sex}
+              setValue={setSex}
               textColor="black"
               style={{
                 height: buttonHeight,
@@ -131,7 +133,7 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Chest Pain Type"
-              value={ChestPainType}
+              value={chestPainType}
               setValue={setChestPainType}
               textColor="black"
               style={{
@@ -143,20 +145,8 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Resting Blood Pressure"
-              value={RestingBloodPressure}
-              setValue={setRestingBloodPressure}
-              textColor="black"
-              style={{
-                height: buttonHeight,
-                marginVertical: buttonMargin,
-                fontSize: fontHeight,
-              }}
-            />
-
-            <CustomInput
-              placeholder="Resting Blood Pressure"
-              value={RestingBloodPressure}
-              setValue={setRestingBloodPressure}
+              value={restingBP}
+              setValue={setRestingBP}
               textColor="black"
               style={{
                 height: buttonHeight,
@@ -167,8 +157,8 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Serum Cholestrol"
-              value={SerumCholestrol}
-              setValue={setSerumCholestrol}
+              value={cholestrol}
+              setValue={setCholestrol}
               textColor="black"
               style={{
                 height: buttonHeight,
@@ -179,7 +169,7 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Fasting Blood Sugar"
-              value={FastingBloodSugar}
+              value={fastingBloodSugar}
               setValue={setFastingBloodSugar}
               textColor="black"
               style={{
@@ -191,8 +181,8 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Resting ECG Results"
-              value={RestingECGResults}
-              setValue={setRestingECGResults}
+              value={restingECG}
+              setValue={setRestingECG}
               textColor="black"
               style={{
                 height: buttonHeight,
@@ -203,8 +193,8 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Max Heart Rate Achieved"
-              value={MaxHeartRateAchieved}
-              setValue={setMaxHeartRateAchieved}
+              value={maxHeartRate}
+              setValue={setMaxHeartRate}
               textColor="black"
               style={{
                 height: buttonHeight,
@@ -215,8 +205,8 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="Exercise Induced Angina"
-              value={ExerciseInducedAngina}
-              setValue={setExerciseInducedAngina}
+              value={exerciseAngina}
+              setValue={setExerciseAngina}
               textColor="black"
               style={{
                 height: buttonHeight,
@@ -227,8 +217,20 @@ const DoctorListScreen = () => {
 
             <CustomInput
               placeholder="ST Depression Induced"
-              value={STDepressionInduced}
-              setValue={setSTDepressionInduced}
+              value={oldpeak}
+              setValue={setOldpeak}
+              textColor="black"
+              style={{
+                height: buttonHeight,
+                marginVertical: buttonMargin,
+                fontSize: fontHeight,
+              }}
+            />
+
+            <CustomInput
+              placeholder="The Slope of the Peak Exercise ST Segment"
+              value={STslope}
+              setValue={setSTSlope}
               textColor="black"
               style={{
                 height: buttonHeight,
