@@ -10,6 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 import MENU from "../../assets/images/menu.png";
 import AdaLOGO from "../../assets/images/adaptive-logo.png";
@@ -41,35 +42,38 @@ const DoctorListScreen = () => {
   };
 
   const onProcessPress = () => {
-    let collection = {};
-    (collection.age = age),
-      (collection.sex = sex),
-      (collection.chestPainType = chestPainType),
-      (collection.restingBP = restingBP),
-      (collection.cholestrol = cholestrol),
-      (collection.fastingBloodSugar = fastingBloodSugar),
-      (collection.restingECG = restingECG),
-      (collection.maxHeartRate = maxHeartRate),
-      (collection.exerciseAngina = exerciseAngina),
-      (collection.oldpeak = oldpeak),
-      (collection.STslope = STslope);
-    console.warn(collection);
+    const url = "http://192.168.1.3:3000/pred";
 
-    const url = "http://127.0.0.1:5000/test";
-
-    fetch(url, {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(collection),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
+    axios
+      .post(url, {
+        Title: "Values for prediction",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: {
+          "age": age,
+          "sex": sex,
+          "chestPainType": chestPainType,
+          "restingBP": restingBP,
+          "cholestrol": cholestrol,
+          "fastingBloodSugar": fastingBloodSugar,
+          "restingECG": restingECG,
+          "maxHeartRate": maxHeartRate,
+          "exerciseAngina": exerciseAngina,
+          "oldpeak": oldpeak,
+          "STslope": STslope,
+        },
       })
-      .catch((error) => {
-        console.error("Error:", error);
+      .then(function (response) {
+        // console.log(response.data.predResult);
+        if (response.data.predResult === "0"){
+          navigation.navigate("nohd");
+        }else if (response.data.predResult === "1"){
+          navigation.navigate("havehd");          
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   };
 
@@ -97,9 +101,7 @@ const DoctorListScreen = () => {
           </View>
         </View>
 
-        <ScrollView
-          style={{ height: height * 0.7, width: "100%", marginTop: 25 }}
-        >
+        <ScrollView style={{ height: "85%", width: "100%", marginTop: 25 }}>
           <View
             style={{
               width: "100%",

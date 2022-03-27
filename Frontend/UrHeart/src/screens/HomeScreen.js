@@ -64,7 +64,7 @@ const HomeScreen = () => {
           </View>
         </View>
         
-        <View style={[styles.main, { height: height * 0.889 }]}>
+        <View style={[styles.main, { height: "89%" }]}>
           <View style={[styles.top, { paddingBottom: height * 0.04 }]}>
             <Card
               Text="Predict with manual data"

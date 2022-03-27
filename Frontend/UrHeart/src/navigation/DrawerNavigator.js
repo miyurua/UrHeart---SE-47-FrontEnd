@@ -7,7 +7,8 @@ import HomeScreen from "../screens/HomeScreen";
 import DrawerContent from "../screens/DrawerContent";
 import PredictManualData from "../screens/PredictManualData";
 import PredictWithECG from "../screens/PredictWithECG";
-
+import HaveDiseaseScreen from "../screens/HaveDiseaseScreen";
+import NoDiseaseScreen from "../screens/NoDiseaseScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -42,6 +43,8 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="DoctorList" component={DoctorListScreen} />
       <Drawer.Screen name="WithData" component={PredictManualData} />
       <Drawer.Screen name="WithECG" component={PredictWithECG} />
+      <Drawer.Screen name="havehd" component={HaveDiseaseScreen} />
+      <Drawer.Screen name="nohd" component={NoDiseaseScreen} />
       <Drawer.Screen name="History" component={HomeScreen} />
       <Drawer.Screen name="Settings" component={HomeScreen} />
     </Drawer.Navigator>
