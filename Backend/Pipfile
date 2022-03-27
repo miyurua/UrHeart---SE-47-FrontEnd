@@ -11,6 +11,9 @@ flask-jwt-extended = "*"
 python-dotenv = "*"
 numpy = "*"
 sklearn = "*"
+pandas = "*"
+seaborn = "*"
+flask-cors = "*"
 
 [dev-packages]
 

@@ -53,7 +53,7 @@ const DoctorListScreen = () => {
     (collection.STDepressionInduced = STDepressionInduced);
     console.warn(collection);
 
-    const url = "https://example.com/profile";
+    const url = "http://127.0.0.1:5000/test";
 
     fetch(url, {
       method: "POST", // or 'PUT'
@@ -96,7 +96,7 @@ const DoctorListScreen = () => {
         </View>
 
         <ScrollView
-          style={{ height: height * 0.889, width: "100%", marginTop: 25 }}
+          style={{ height: height * 0.7, width: "100%", marginTop: 25 }}
         >
           <View
             style={{
