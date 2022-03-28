@@ -4,6 +4,7 @@ from flask_restful import Resource, Api, reqparse
 from werkzeug import Response
 from flask_mongoengine import MongoEngine
 import json
+from Check.checker import PredictionAPI
 from resources.routes import initialize_routes
 from resources.patient import PatientsAPI, PatientAPI
 from flask_cors import CORS
@@ -16,6 +17,10 @@ import pickle
 
 app = Flask(__name__)
 api = Api(app)
+
+app.config['MONGODB_SETTINGS'] = {
+    'host': 'mongodb://localhost/patient-list'
+}
 
 
 
@@ -118,21 +123,23 @@ class CoreAPI(Resource):
         try:
             tester = Patient.objects().get(id=id).to_json()
             return Response(tester, mimetype="application/json", status=200)
-        except mongoengine.errors.ValidationError:
+        except MongoEngine.errors.ValidationError:
             res = {
                 'error':'INVALID ID',
                 'status': 500
             }
             return res, 500
+
     def prediction():
-        print("Prediction")          
-
-
-app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb://localhost/patient-list'
-}
+        test_data = request.json
+        s1 = json.dumps(test_data)
+        print_json = json.loads(s1)
+        list = print_json['body']
+        input_data = (float(list['age']), float(list['sex']), float(list['chestPainType']),	float(list['restingBP']), float(list['cholestrol']), float(list['fastingBloodSugar']), float(list['restingECG']), float(list['maxHeartRate']), float(list['exerciseAngina']),	float(list['oldpeak']), float(list['STslope']))
+        return jsonify({'predResult':str(PredictionAPI(input_data))})        
 
 initialize_db(app)
 initialize_routes(api)
+
 
 app.run()
