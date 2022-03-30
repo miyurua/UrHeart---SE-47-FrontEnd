@@ -9,6 +9,7 @@ const CustomInput = (props) => {
       placeholder={props.placeholder}
       style={{...styles.container, ...props.style}}
       secureTextEntry={props.secureTextEntry}
+      keyboardType={props.keyboardType}
     />
   );
 };
