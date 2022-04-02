@@ -63,7 +63,7 @@ const HaveDiseaseScreen = () => {
         >
           <Card
             style={{ width: cardWidth, height: "80%", margin: cardMargin }}
-            Text="You have a heart disease"
+            Text="You are likely to have a heart disease"
           >
             <Image
               source={Failed}

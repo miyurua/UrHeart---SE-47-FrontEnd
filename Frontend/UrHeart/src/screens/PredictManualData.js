@@ -53,7 +53,7 @@ const DoctorListScreen = () => {
     if (inputText < 0 || inputText > 250) {
       Alert.alert(
         "Invalid Input!",
-        "Resting Blood presure has to be between 0 to 200",
+        "Resting Blood presure has to be between 0 to 250",
         [{ text: "Okay", style: "destructive" }]
       );
       return;
@@ -122,10 +122,11 @@ const DoctorListScreen = () => {
       );
       return;
     } else {
-      const url = "http://192.168.1.3:3000/pred";
+      const url = "https://urheart.herokuapp.com";
+      // const url = "http://192.168.1.3:5000";
 
       axios
-        .post(url, {
+        .post(url+"/predict", {
           Title: "Values for prediction",
           headers: {
             "Content-Type": "application/json",
@@ -145,11 +146,11 @@ const DoctorListScreen = () => {
           },
         })
         .then(function (response) {
-          // console.log(response.data.predResult);
-          if (response.data.predResult === "0") {
+          console.log(response.data.predResult.output);
+          if (response.data.predResult.output === "This Person is NOT Likely to have a Heart Disease") {
             navigation.navigate("nohd");
             navigation.navigate("dnav");
-          } else if (response.data.predResult === "1") {
+          } else if (response.data.predResult.output === "This Person is Likely to have a Heart Disease") {
             navigation.navigate("havehd");
             navigation.navigate("dnav");
           }
@@ -158,17 +159,17 @@ const DoctorListScreen = () => {
           console.log(error);
         });
 
-      setAge("");
-      setSex("");
-      setChestPainType("");
-      setRestingBP("");
-      setCholestrol("");
-      setFastingBloodSugar("");
-      setRestingECG("");
-      setMaxHeartRate("");
-      setExerciseAngina("");
-      setOldpeak("");
-      setSTSlope("");
+      // setAge("");
+      // setSex("");
+      // setChestPainType("");
+      // setRestingBP("");
+      // setCholestrol("");
+      // setFastingBloodSugar("");
+      // setRestingECG("");
+      // setMaxHeartRate("");
+      // setExerciseAngina("");
+      // setOldpeak("");
+      // setSTSlope("");
     }
   };
 
