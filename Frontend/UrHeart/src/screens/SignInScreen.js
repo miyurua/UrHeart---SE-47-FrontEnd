@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TouchableWithoutFeedback,
   View,
@@ -8,14 +8,14 @@ import {
   useWindowDimensions,
 } from "react-native";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import Logo from "../../assets/images/logo.png";
 import FACEBOOK from "../../assets/images/Fb.png";
 import GOOGLE from "../../assets/images/Google.png";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
-
-import Global from "../global";
 
 const SignInScreen = () => {
   const navigation = useNavigation();
@@ -31,15 +31,33 @@ const SignInScreen = () => {
   const [usernameError, setUsernameError] = useState("Username");
   const [passwordError, setPasswordError] = useState("Password");
 
-  const onSignInPressed = () => {
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    try {
+      AsyncStorage.getItem("UserName").then((Value) => {
+        if (Value != null) {
+          navigation.navigate("dnav", "Home");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onSignInPressed = async () => {
     if (username === "" || password === "") {
       setUsernameError("Enter Username");
       setPasswordError("Enter Password");
     } else {
-      Global.SignInState = "Home";
-      Global.UserName = username;
-      navigation.navigate("Home");
-      navigation.navigate("dnav");
+      try {
+        await AsyncStorage.setItem("UserName", username);
+      } catch (error) {
+        console.log(error);
+      }
+      navigation.navigate("dnav", "Home");
       setPassword("");
       setUsernameError("Username");
       setPasswordError("Password");

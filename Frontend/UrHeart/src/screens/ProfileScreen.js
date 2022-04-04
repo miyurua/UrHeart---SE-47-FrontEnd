@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Image,
@@ -12,12 +12,40 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Title, Caption } from "react-native-paper";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import MENU from "../../assets/images/menu.png";
 import AdaLOGO from "../../assets/images/adaptive-logo.png";
 
-import Global from "../global";
-
 const ProfileScreen = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    try {
+      AsyncStorage.getItem("UserName").then((Value) => {
+        if (Value != null) {
+          setUsername(Value);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      AsyncStorage.getItem("Email").then((Value) => {
+        if (Value != null) {
+          setEmail(Value);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const { height } = useWindowDimensions();
   const avatarSize = height * 0.12;
   const cardWidth = "80%";
@@ -53,13 +81,36 @@ const ProfileScreen = () => {
           </View>
         </View>
 
-        <ScrollView
-          style={{ height: height * 0.889, width: "100%", marginTop: 25 }}
-        >
-          <View style={{ width: "100%", alignItems: "center" }}>
-            <Avatar.Text label={Global.IconText} size={100} />
+        <View style={{ height: "89%", width: "100%", marginTop: 25 }}>
+          <View
+            style={{
+              width: "100%",
+              marginLeft: "9%",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Avatar.Text
+              label={username.substring(0, 2)}
+              size={80}
+              style={{ backgroundColor: "black" }}
+            />
+            <View
+              style={{
+                marginLeft: 25,
+                flexDirection: "column",
+              }}
+            >
+              <Title style={styles.title}>{username}</Title>
+              <Caption style={styles.caption}>{email}</Caption>
+            </View>
           </View>
-        </ScrollView>
+          <View style={{ flex: 1, marginTop: 30 }}>
+            <ScrollView>
+              
+            </ScrollView>
+          </View>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -76,6 +127,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: "8%",
     justifyContent: "space-between",
+  },
+  title: {
+    fontSize: 25,
+    fontWeight: "bold",
+  },
+  caption: {
+    marginTop: 3,
+    fontSize: 16,
+    lineHeight: 16,
+    fontWeight: "bold",
   },
 });
 

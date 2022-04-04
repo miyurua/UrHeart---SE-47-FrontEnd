@@ -22,8 +22,7 @@ const ConfirmEmailScreen = () => {
   const [code, setCode] = useState("");
 
   const onConfirmPressed = () => {
-    navigation.navigate("Home");
-    navigation.navigate("dnav");
+    navigation.navigate("dnav", "Home");
     setCode("");
   };
 

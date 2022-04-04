@@ -1,17 +1,57 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import { View, StyleSheet } from "react-native";
 import { Avatar, Drawer, Title, Caption } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-import Global from "../global";
-
 const DrawerContent = (props) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    try{
+      AsyncStorage.getItem('UserName')
+        .then(Value => {
+          if(Value != null){
+            setUsername(Value);
+          }
+        })
+    }catch (error){
+      console.log(error);
+    }
+    try{
+      AsyncStorage.getItem('Email')
+        .then(Value => {
+          if(Value != null){
+            setEmail(Value);
+          }
+        })
+    }catch (error){
+      console.log(error);
+    }
+  }
+
   const navigation = useNavigation();
 
-  const onSignOutPressed = () => {
+  const onSignOutPressed = async () => {
+    try {
+      await AsyncStorage.setItem("UserName", "");
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      await AsyncStorage.setItem("Email", "");
+    } catch (error) {
+      console.log(error);
+    }
     navigation.navigate("SignIn");
   };
 
@@ -48,10 +88,10 @@ const DrawerContent = (props) => {
                 marginTop: 15,
               }}
             >
-              <Avatar.Text label={Global.UserName.substring(0, 2)} size={50} />
+              <Avatar.Text label={username.substring(0, 2)} size={50} style={{backgroundColor:"black"}} />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>
-                <Title style={styles.title}>{Global.UserName}</Title>
-                <Caption style={styles.caption}>{Global.Email}</Caption>
+                <Title style={styles.title}>{username}</Title>
+                <Caption style={styles.caption}>{email}</Caption>
               </View>
             </View>
           </View>

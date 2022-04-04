@@ -27,41 +27,44 @@ const DoctorListScreen = () => {
 
   const navigation = useNavigation();
 
-  
-
   const onMenuPressed = () => {
     navigation.toggleDrawer();
   };
 
-  const onProcessPress = () => {
-    
-  };
- 
-  const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
-  const[ image, SetImage] = useState(null);
-  useEffect(() => {
-      (async () => {
-          const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
-          setHasGalleryPermission(galleryStatus.status === 'granted' );
+  const onProcessPress = () => {};
 
-      })();
-  }, []);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const pickImage = async () => {
-      let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.Images, 
-          allowsEdting: true, 
-          aspect: [4,3],
-          quality: 1,
-      });
-      console.log(result);
-      if (!result.canselled){
-          SetImage(result.uri);
-      }
+  let openImagePickerAsync = async () => {
+    let permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert("Permission to access camera roll is required!");
+      return;
+    }
+
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+
+    if (pickerResult.cancelled === true) {
+      return;
+    }
+
+    setSelectedImage({ localUri: pickerResult.uri });
   };
-  if (hasGalleryPermission === false){
-      return <Text>No access to Internal Storage</Text>
+
+  let image;
+
+  if (selectedImage !== null) {
+    image = (
+      <Image
+        source={{ uri: selectedImage.localUri }}
+        style={{ height: "100%", width: "100%" }}
+        resizeMode="contain"
+      />
+    );
   }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={[styles.container, { paddingTop: height * 0.08 }]}>
@@ -86,9 +89,7 @@ const DoctorListScreen = () => {
           </View>
         </View>
 
-        <ScrollView
-          style={{ height: height * 0.889, width: "100%", marginTop: 25 }}
-        >
+        <View style={{ height: "89%", width: "100%", marginTop: 25 }}>
           <View
             style={{
               width: "100%",
@@ -96,13 +97,36 @@ const DoctorListScreen = () => {
               paddingHorizontal: "8%",
             }}
           >
-        <View style={{flex:1, justifyContent: 'center'}}>
-         <Button title= 'Pick Image'onPress={() => pickImage()} style={{marginTop:30}} />
-         {image && <Image source={{uri: image}} style={{Flex:1/2}}/>}
-        </View>
-            
+            <View style={{width: "100%", height: "85%"}}>
+              <CustomButton
+                text="Pick a photo"
+                color="#6600ff"
+                fontSize={fontHeight}
+                onPress={openImagePickerAsync}
+                style={{
+                  height: buttonHeight,
+                  marginVertical: buttonMargin,
+                }}
+              />
+              <View
+                style={{ width: "100%", height: "75%", marginVertical: 20 }}
+              >
+                {image}
+              </View>
+            </View>
+            <CustomButton
+              text="Process image"
+              color="white"
+              fontSize={fontHeight}
+              onPress={onProcessPress}
+              style={{
+                backgroundColor: "#6600ff",
+                height: buttonHeight,
+                marginVertical: buttonMargin,
+              }}
+            />
           </View>
-        </ScrollView>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -119,6 +143,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: "8%",
     justifyContent: "space-between",
+  },
+  thumbnail: {
+    width: 300,
+    height: 300,
+    resizeMode: "contain",
   },
 });
 

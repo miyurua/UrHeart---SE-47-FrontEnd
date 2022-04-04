@@ -12,8 +12,6 @@ import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import NewPasswordScreen from "../screens/NewPasswordScreen";
 import HomeScreen from "../screens/HomeScreen";
 
-import Global from '../global';
-
 const Stack = createStackNavigator();
 
 const config = {
@@ -36,7 +34,7 @@ const screenOptionStyle = {
 
 const Navigation = () => {
   return (
-    <Stack.Navigator screenOptions={screenOptionStyle} initialRouteName={Global.SignInState}>
+    <Stack.Navigator screenOptions={screenOptionStyle} initialRouteName={"SignIn"}>
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />

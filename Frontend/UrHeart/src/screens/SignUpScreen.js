@@ -14,7 +14,7 @@ import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
 
-import Global from "../global";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -34,13 +34,18 @@ const SignUpScreen = () => {
   const [passwordError, setPasswordError] = useState("Password");
   const [passwordRepeatError, setPasswordRepeatError] = useState("Repeat Password");
 
-  const onRegisterPressed = () => {
+  const onRegisterPressed = async () => {
     if (username != "" && email != "" && password != "" && password === passwordRepeat) {
-      Global.SignInState = "Home";
-      Global.UserName = username;
-      Global.Email = email;
-      Global.Password = password;
-      navigation.navigate("ConfirmEmail");
+      try {
+        await AsyncStorage.setItem("UserName", username);
+      } catch (error) {
+        console.log(error);
+      }
+      try {
+        await AsyncStorage.setItem("Email", email);
+      } catch (error) {
+        console.log(error);
+      }
       setUsername("");
       setEmail("");
       setPassword("");
@@ -49,6 +54,7 @@ const SignUpScreen = () => {
       setEmailError("Email");
       setPasswordError("Password");
       setPasswordRepeatError("Repeat Password");
+      navigation.navigate("ConfirmEmail");
     } else if (username === "" || email === "" || password === ""){
       setUsernameError("Enter Username");
       setEmailError("Enter Email");
