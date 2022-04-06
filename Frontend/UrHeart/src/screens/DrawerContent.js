@@ -6,6 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { auth } from "../authentication/firebase";
+
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const DrawerContent = (props) => {
@@ -41,18 +43,21 @@ const DrawerContent = (props) => {
 
   const navigation = useNavigation();
 
-  const onSignOutPressed = async () => {
-    try {
-      await AsyncStorage.setItem("UserName", "");
-    } catch (error) {
-      console.log(error);
-    }
+  const onSignOutPressed = () => {
+    auth.signOut()
+    .then(() => {
+      setData();
+    })
+    .catch((error) => alert(error.message));
+    navigation.navigate("SignIn");
+  };
+
+  const setData = async () => {
     try {
       await AsyncStorage.setItem("Email", "");
     } catch (error) {
       console.log(error);
     }
-    navigation.navigate("SignIn");
   };
 
   const onHomePressed = () => {
@@ -88,7 +93,9 @@ const DrawerContent = (props) => {
                 marginTop: 15,
               }}
             >
-              <Avatar.Text label={username.substring(0, 2)} size={50} style={{backgroundColor:"black"}} />
+              <Avatar.Text label={username.substring(0, 2)} size={50} 
+              // style={{backgroundColor:"black"}} 
+              />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>
                 <Title style={styles.title}>{username}</Title>
                 <Caption style={styles.caption}>{email}</Caption>

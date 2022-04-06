@@ -6,9 +6,12 @@ import {
   StyleSheet,
   Keyboard,
   useWindowDimensions,
+  KeyboardAvoidingView,
 } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { auth } from "../authentication/firebase";
 
 import Logo from "../../assets/images/logo.png";
 import FACEBOOK from "../../assets/images/Fb.png";
@@ -25,10 +28,10 @@ const SignInScreen = () => {
   const buttonHeight = height * 0.075;
   const buttonMargin = (height * 0.018) / 2;
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [usernameError, setUsernameError] = useState("Username");
+  const [emailError, setEmailError] = useState("Email");
   const [passwordError, setPasswordError] = useState("Password");
 
   useEffect(() => {
@@ -37,7 +40,7 @@ const SignInScreen = () => {
 
   const getData = () => {
     try {
-      AsyncStorage.getItem("UserName").then((Value) => {
+      AsyncStorage.getItem("Email").then((Value) => {
         if (Value != null) {
           navigation.navigate("dnav", "Home");
         }
@@ -47,20 +50,32 @@ const SignInScreen = () => {
     }
   };
 
-  const onSignInPressed = async () => {
-    if (username === "" || password === "") {
-      setUsernameError("Enter Username");
+  const onSignInPressed = () => {
+    if (email === "" || password === "") {
+      setEmailError("Enter Email");
       setPasswordError("Enter Password");
     } else {
-      try {
-        await AsyncStorage.setItem("UserName", username);
-      } catch (error) {
-        console.log(error);
-      }
-      navigation.navigate("dnav", "Home");
-      setPassword("");
-      setUsernameError("Username");
-      setPasswordError("Password");
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          console.log("Logged in with: ", user.email);
+          setData();
+          setEmail("");
+          setPassword("");
+          setEmailError("Email");
+          setPasswordError("Password");
+          navigation.navigate("dnav", "Home");
+        })
+        .catch((error) => alert(error.message));
+    }
+  };
+
+  const setData = async () => {
+    try {
+      await AsyncStorage.setItem("Email", email);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -86,8 +101,16 @@ const SignInScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={[styles.container, { paddingTop: height * 0.05 }]}>
-        <View style={styles.top}>
+      <View style={{ height: height, width: "100%", alignItems: "center" }}>
+        <KeyboardAvoidingView
+          behavior="padding"
+          style={{
+            height: height * 0.91,
+            width: "90%",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <Image
             source={Logo}
             style={[styles.logo, { height: height * 0.3 }]}
@@ -95,9 +118,9 @@ const SignInScreen = () => {
           />
 
           <CustomInput
-            placeholder={usernameError}
-            value={username}
-            setValue={setUsername}
+            placeholder={emailError}
+            value={email}
+            setValue={setEmail}
             textColor="white"
             style={{
               height: buttonHeight,
@@ -138,7 +161,7 @@ const SignInScreen = () => {
             style={{ height: buttonHeight, marginVertical: buttonMargin }}
           />
 
-          <CustomButton
+          {/* <CustomButton
             text="Sign In with Facebook"
             color="#4765A9"
             fontSize={fontHeight}
@@ -178,10 +201,10 @@ const SignInScreen = () => {
                 resizeMode="contain"
               />
             </View>
-          </CustomButton>
-        </View>
+          </CustomButton> */}
+        </KeyboardAvoidingView>
 
-        <View style={styles.bottom}>
+        <View style={{ width: "90%" }}>
           <CustomButton
             text="Don't have an account? Create one"
             color="gray"

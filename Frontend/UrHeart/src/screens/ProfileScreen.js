@@ -93,7 +93,7 @@ const ProfileScreen = () => {
             <Avatar.Text
               label={username.substring(0, 2)}
               size={80}
-              style={{ backgroundColor: "black" }}
+              // style={{ backgroundColor: "black" }}
             />
             <View
               style={{

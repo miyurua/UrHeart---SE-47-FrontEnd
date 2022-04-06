@@ -3,6 +3,7 @@ import {
   TouchableWithoutFeedback,
   View,
   Image,
+  KeyboardAvoidingView,
   Text,
   StyleSheet,
   Keyboard,
@@ -15,6 +16,8 @@ import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { auth } from "../authentication/firebase";
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -32,36 +35,51 @@ const SignUpScreen = () => {
   const [usernameError, setUsernameError] = useState("Username");
   const [emailError, setEmailError] = useState("Email");
   const [passwordError, setPasswordError] = useState("Password");
-  const [passwordRepeatError, setPasswordRepeatError] = useState("Repeat Password");
+  const [passwordRepeatError, setPasswordRepeatError] =
+    useState("Repeat Password");
 
-  const onRegisterPressed = async () => {
-    if (username != "" && email != "" && password != "" && password === passwordRepeat) {
-      try {
-        await AsyncStorage.setItem("UserName", username);
-      } catch (error) {
-        console.log(error);
-      }
-      try {
-        await AsyncStorage.setItem("Email", email);
-      } catch (error) {
-        console.log(error);
-      }
-      setUsername("");
-      setEmail("");
-      setPassword("");
-      setPasswordRepeat("");
-      setUsernameError("Username");
-      setEmailError("Email");
-      setPasswordError("Password");
-      setPasswordRepeatError("Repeat Password");
-      navigation.navigate("ConfirmEmail");
-    } else if (username === "" || email === "" || password === ""){
+  const onRegisterPressed = () => {
+    if (
+      username != "" &&
+      email != "" &&
+      password != "" &&
+      password === passwordRepeat
+    ) {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          setData();
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          setPasswordRepeat("");
+          setUsernameError("Username");
+          setEmailError("Email");
+          setPasswordError("Password");
+          setPasswordRepeatError("Repeat Password");
+          navigation.navigate("dnav", "Home");
+        })
+        .catch((error) => alert(error.message));
+    } else if (username === "" || email === "" || password === "") {
       setUsernameError("Enter Username");
       setEmailError("Enter Email");
       setPasswordError("Enter Password");
     } else {
       setPasswordRepeat("");
       setPasswordRepeatError("Check your password & try again");
+    }
+  };
+
+  const setData = async () => {
+    try {
+      await AsyncStorage.setItem("UserName", username);
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      await AsyncStorage.setItem("Email", email);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -91,8 +109,16 @@ const SignUpScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={[styles.container, { paddingTop: height * 0.08 }]}>
-        <View style={[styles.top, { paddingTop: height * 0.05 }]}>
+      <View style={{ height: height, width: "100%", alignItems: "center" }}>
+        <KeyboardAvoidingView
+          behavior="padding"
+          style={{
+            height: height * 0.91,
+            width: "90%",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <Text style={[styles.title, { fontSize: height * 0.04 }]}>
             Create an account
           </Text>
@@ -158,7 +184,7 @@ const SignUpScreen = () => {
             }}
           />
 
-          <CustomButton
+          {/* <CustomButton
             text="Sign In with Facebook"
             color="#4765A9"
             fontSize={fontHeight}
@@ -198,10 +224,10 @@ const SignUpScreen = () => {
                 resizeMode="contain"
               />
             </View>
-          </CustomButton>
-        </View>
+          </CustomButton> */}
+        </KeyboardAvoidingView>
 
-        <View style={styles.bottom}>
+        <View style={{ height: height * 0.1, width: "90%" }}>
           <CustomButton
             text="Have an account? Sign in"
             color="gray"
@@ -220,9 +246,7 @@ const SignUpScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
-    justifyContent: "space-between",
   },
   title: {
     fontWeight: "bold",
@@ -236,6 +260,7 @@ const styles = StyleSheet.create({
   },
   top: {
     alignItems: "center",
+    justifyContent: "center",
     width: "100%",
     paddingHorizontal: 20,
   },
