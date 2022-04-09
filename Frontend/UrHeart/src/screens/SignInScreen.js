@@ -28,6 +28,7 @@ const SignInScreen = () => {
   const buttonHeight = height * 0.075;
   const buttonMargin = (height * 0.018) / 2;
 
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -57,9 +58,10 @@ const SignInScreen = () => {
     } else {
       auth
         .signInWithEmailAndPassword(email, password)
-        .then((userCredentials) => {
-          const user = userCredentials.user;
-          console.log("Logged in with: ", user.email);
+        .then(() => {
+          auth.currentUser.providerData.forEach((userInfo) => {
+            setUsername(userInfo.displayName);
+          });
           setData();
           setEmail("");
           setPassword("");
@@ -73,6 +75,7 @@ const SignInScreen = () => {
 
   const setData = async () => {
     try {
+      await AsyncStorage.setItem("UserName", username);
       await AsyncStorage.setItem("Email", email);
     } catch (error) {
       console.log(error);

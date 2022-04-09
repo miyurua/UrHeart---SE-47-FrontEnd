@@ -48,6 +48,7 @@ const SignUpScreen = () => {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
+          auth.currentUser.updateProfile({displayName: username});
           setData();
           setUsername("");
           setEmail("");
@@ -73,10 +74,6 @@ const SignUpScreen = () => {
   const setData = async () => {
     try {
       await AsyncStorage.setItem("UserName", username);
-    } catch (error) {
-      console.log(error);
-    }
-    try {
       await AsyncStorage.setItem("Email", email);
     } catch (error) {
       console.log(error);

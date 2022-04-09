@@ -58,6 +58,11 @@ const DrawerContent = (props) => {
     } catch (error) {
       console.log(error);
     }
+    try {
+      await AsyncStorage.setItem("UserName", "");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onHomePressed = () => {
