@@ -48,7 +48,7 @@ const SignUpScreen = () => {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
-          auth.currentUser.updateProfile({displayName: username});
+          auth.currentUser.updateProfile({ displayName: username });
           setData();
           setUsername("");
           setEmail("");
@@ -106,14 +106,21 @@ const SignUpScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={{ height: height, width: "100%", alignItems: "center" }}>
+      <View
+        style={{
+          height: "100%",
+          width: "100%",
+          alignItems: "center",
+          minHeight: height,
+        }}
+      >
         <KeyboardAvoidingView
           behavior="padding"
           style={{
-            height: height * 0.91,
+            height: "100%",
             width: "90%",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Text style={[styles.title, { fontSize: height * 0.04 }]}>
@@ -224,7 +231,14 @@ const SignUpScreen = () => {
           </CustomButton> */}
         </KeyboardAvoidingView>
 
-        <View style={{ height: height * 0.1, width: "90%" }}>
+        <View
+          style={{
+            height: "10%",
+            position: "absolute",
+            bottom: 0,
+            width: "90%",
+          }}
+        >
           <CustomButton
             text="Have an account? Sign in"
             color="gray"

@@ -23,7 +23,8 @@ import { useNavigation } from "@react-navigation/native";
 const SignInScreen = () => {
   const navigation = useNavigation();
 
-  const { height } = useWindowDimensions();
+  const height = useWindowDimensions().height;
+  //const { height } = useWindowDimensions();
   const fontHeight = height * 0.0218;
   const buttonHeight = height * 0.075;
   const buttonMargin = (height * 0.018) / 2;
@@ -104,14 +105,21 @@ const SignInScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={{ height: height, width: "100%", alignItems: "center" }}>
+      <View
+        style={{
+          height: "100%",
+          width: "100%",
+          alignItems: "center",
+          minHeight: height,
+        }}
+      >
         <KeyboardAvoidingView
           behavior="padding"
           style={{
-            height: height * 0.91,
+            height: "95%",
             width: "90%",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Image
@@ -207,7 +215,14 @@ const SignInScreen = () => {
           </CustomButton> */}
         </KeyboardAvoidingView>
 
-        <View style={{ width: "90%" }}>
+        <View
+          style={{
+            height: "10%",
+            position: "absolute",
+            bottom: 0,
+            width: "90%",
+          }}
+        >
           <CustomButton
             text="Don't have an account? Create one"
             color="gray"
