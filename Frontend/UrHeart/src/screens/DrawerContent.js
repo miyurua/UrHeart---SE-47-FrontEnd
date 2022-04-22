@@ -15,10 +15,12 @@ const DrawerContent = (props) => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    getData();
+    getUserName();
+    getEmail();
   }, []);
 
-  const getData = () => {
+  
+  const getUserName = () => {
     try{
       AsyncStorage.getItem('UserName')
         .then(Value => {
@@ -28,7 +30,10 @@ const DrawerContent = (props) => {
         })
     }catch (error){
       console.log(error);
-    }
+    };
+  };
+
+  const getEmail = () => {
     try{
       AsyncStorage.getItem('Email')
         .then(Value => {
@@ -38,8 +43,8 @@ const DrawerContent = (props) => {
         })
     }catch (error){
       console.log(error);
-    }
-  }
+    };
+  };
 
   const navigation = useNavigation();
 

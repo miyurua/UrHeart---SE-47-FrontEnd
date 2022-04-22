@@ -64,10 +64,11 @@ const NoDiseaseScreen = () => {
           <Card
             style={{ width: cardWidth, height: "80%", margin: cardMargin }}
             Text="You are not likely to have a heart disease"
+            textstyle={{fontSize: 25}}
           >
             <Image
               source={Success}
-              style={{ height: "80%", width: "80%", paddingTop: 10 }}
+              style={{ height: "100%", width: "100%", paddingTop: 10 }}
               resizeMode="contain"
             />
           </Card>

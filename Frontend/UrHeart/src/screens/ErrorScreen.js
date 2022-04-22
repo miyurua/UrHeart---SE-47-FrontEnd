@@ -13,9 +13,9 @@ import { useNavigation } from "@react-navigation/native";
 import Card from "../components/Card";
 import MENU from "../../assets/images/menu.png";
 import AdaLOGO from "../../assets/images/adaptive-logo.png";
-import Failed from "../../assets/images/failed.png";
+import Error from "../../assets/images/error.png";
 
-const HaveDiseaseScreen = () => {
+const ErrorScreen = () => {
   const { height } = useWindowDimensions();
   const cardHeight = height * 0.8;
   const cardWidth = "80%";
@@ -63,11 +63,11 @@ const HaveDiseaseScreen = () => {
         >
           <Card
             style={{ width: cardWidth, height: "80%", margin: cardMargin }}
-            Text="You are likely to have a heart disease"
+            Text="An error has occurred"
             textstyle={{fontSize: 25}}
           >
             <Image
-              source={Failed}
+              source={Error}
               style={{ height: "100%", width: "100%", paddingTop: 10 }}
               resizeMode="contain"
             />
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HaveDiseaseScreen;
+export default ErrorScreen;

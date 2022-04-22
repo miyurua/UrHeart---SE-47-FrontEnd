@@ -123,7 +123,7 @@ const DoctorListScreen = () => {
       return;
     } else {
       const url = "https://urheart.herokuapp.com";
-      // const url = "http://192.168.1.3:5000";
+      //const url = "http://192.168.1.3:5000";
 
       axios
         .post(url+"/predict", {
@@ -156,20 +156,20 @@ const DoctorListScreen = () => {
           }
         })
         .catch(function (error) {
-          console.log(error);
+          navigation.navigate("error");
         });
 
-      // setAge("");
-      // setSex("");
-      // setChestPainType("");
-      // setRestingBP("");
-      // setCholestrol("");
-      // setFastingBloodSugar("");
-      // setRestingECG("");
-      // setMaxHeartRate("");
-      // setExerciseAngina("");
-      // setOldpeak("");
-      // setSTSlope("");
+      setAge("");
+      setSex("");
+      setChestPainType("");
+      setRestingBP("");
+      setCholestrol("");
+      setFastingBloodSugar("");
+      setRestingECG("");
+      setMaxHeartRate("");
+      setExerciseAngina("");
+      setOldpeak("");
+      setSTSlope("");
     }
   };
 

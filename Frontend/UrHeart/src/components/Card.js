@@ -5,7 +5,7 @@ const Card = (props) => {
   return (
     <Pressable onPress={props.onPress} style={{ ...styles.card, ...props.style }}>
       <View style={styles.header}>
-          <Text style={styles.textDecorator}>{props.Text}</Text>
+          <Text style={{...styles.textDecorator, ...props.textstyle}}>{props.Text}</Text>
         </View>
         <View style={styles.footer}>{props.children}</View>
     </Pressable>

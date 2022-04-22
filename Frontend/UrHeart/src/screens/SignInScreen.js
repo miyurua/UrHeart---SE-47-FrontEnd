@@ -52,6 +52,8 @@ const SignInScreen = () => {
     }
   };
 
+  var name;
+
   const onSignInPressed = () => {
     if (email === "" || password === "") {
       setEmailError("Enter Email");
@@ -61,9 +63,12 @@ const SignInScreen = () => {
         .signInWithEmailAndPassword(email, password)
         .then(() => {
           auth.currentUser.providerData.forEach((userInfo) => {
-            setUsername(userInfo.displayName);
+            name = userInfo.displayName;
+            //console.log(name+"dsf");
+            setUsername(name);
           });
-          setData();
+          setAsyncUsername();
+          setAsyncEmail();
           setEmail("");
           setPassword("");
           setEmailError("Email");
@@ -74,13 +79,12 @@ const SignInScreen = () => {
     }
   };
 
-  const setData = async () => {
-    try {
-      await AsyncStorage.setItem("UserName", username);
-      await AsyncStorage.setItem("Email", email);
-    } catch (error) {
-      console.log(error);
-    }
+  const setAsyncUsername = async () => {
+    await AsyncStorage.setItem("UserName", username);
+  };
+
+  const setAsyncEmail = async () => {
+    await AsyncStorage.setItem("Email", email);
   };
 
   const onForgotPasswordPressed = () => {

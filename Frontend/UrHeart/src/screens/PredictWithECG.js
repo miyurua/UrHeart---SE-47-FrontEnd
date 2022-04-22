@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
-  Text,
   View,
-  Button,
   Image,
   TouchableWithoutFeedback,
   StyleSheet,
   Keyboard,
   useWindowDimensions,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 
 import MENU from "../../assets/images/menu.png";
 import AdaLOGO from "../../assets/images/adaptive-logo.png";
-import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 
 const DoctorListScreen = () => {
@@ -31,11 +27,14 @@ const DoctorListScreen = () => {
     navigation.toggleDrawer();
   };
 
-  const onProcessPress = () => {};
+  const onProcessPress = async () => {};
+
+  const url = 'http://192.168.1.3:5000';
 
   const [selectedImage, setSelectedImage] = useState(null);
+  const [responceImage, setResponceImage] = useState(null);
 
-  let openImagePickerAsync = async () => {
+  const pickImage = async () => {
     let permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -43,14 +42,47 @@ const DoctorListScreen = () => {
       alert("Permission to access camera roll is required!");
       return;
     }
+    
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      quality: 1,
+    });
 
-    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    console.log(result);
+    setSelectedImage(result);
 
-    if (pickerResult.cancelled === true) {
+    if (result.cancelled) {
       return;
     }
 
-    setSelectedImage({ localUri: pickerResult.uri });
+    // ImagePicker saves the taken photo to disk and returns a local URI to it
+    let localUri = result.uri;
+    let filename = localUri.split('/').pop();
+
+    // Infer the type of the image
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+
+    // Upload the image using the fetch and FormData APIs
+    let formData = new FormData();
+    // Assume "photo" is the name of the form field the server expects
+    formData.append('file', { uri: localUri, name: filename, type });
+
+    return await fetch( url+'/upload', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+        console.log('response object:',responseJson)
+        setResponceImage(responseJson);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   };
 
   let image;
@@ -58,7 +90,7 @@ const DoctorListScreen = () => {
   if (selectedImage !== null) {
     image = (
       <Image
-        source={{ uri: selectedImage.localUri }}
+        source={{ uri: selectedImage.uri }}
         style={{ height: "100%", width: "100%" }}
         resizeMode="contain"
       />
@@ -97,12 +129,12 @@ const DoctorListScreen = () => {
               paddingHorizontal: "8%",
             }}
           >
-            <View style={{width: "100%", height: "85%"}}>
+            <View style={{ width: "100%", height: "85%" }}>
               <CustomButton
                 text="Pick a photo"
                 color="#6600ff"
                 fontSize={fontHeight}
-                onPress={openImagePickerAsync}
+                onPress={pickImage}
                 style={{
                   height: buttonHeight,
                   marginVertical: buttonMargin,

@@ -24,7 +24,5 @@ if (firebase.apps.length === 0){
 
 const auth = firebase.auth();
 
-const store = firebase.firestore();
-
-export {auth, store};
+export {auth};
 //const app = initializeApp(firebaseConfig);
