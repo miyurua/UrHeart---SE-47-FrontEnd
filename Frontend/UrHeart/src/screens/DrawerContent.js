@@ -78,8 +78,8 @@ const DrawerContent = (props) => {
     props.navigation.navigate("Profile");
   };
 
-  const onDoctorListPressed = () => {
-    props.navigation.navigate("DoctorList");
+  const onHelpPressed = () => {
+    props.navigation.navigate("help");
   };
 
   const onHistoryPressed = () => {
@@ -103,7 +103,7 @@ const DrawerContent = (props) => {
                 marginTop: 15,
               }}
             >
-              <Avatar.Text label={username.substring(0, 2)} size={50} 
+              <Avatar.Text label={email.substring(0, 2)} size={50} 
               // style={{backgroundColor:"black"}} 
               />
               <View style={{ marginLeft: 15, flexDirection: "column" }}>
@@ -137,10 +137,10 @@ const DrawerContent = (props) => {
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
             icon={({ color, size }) => (
-              <Icon name="doctor" color={color} size={size} />
+              <Icon name="help-rhombus" color={color} size={size} />
             )}
-            label="Doctor List"
-            onPress={onDoctorListPressed}
+            label="Help"
+            onPress={onHelpPressed}
           />
         </Drawer.Section>
 

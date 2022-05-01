@@ -75,11 +75,9 @@ const DoctorListScreen = () => {
 
   const onmaxHeartRateSet = (inputText) => {
     if (inputText < 0 || inputText > 250) {
-      Alert.alert(
-        "Invalid Input!",
-        "Max Heart Rate should be below 250",
-        [{ text: "Okay", style: "destructive" }]
-      );
+      Alert.alert("Invalid Input!", "Max Heart Rate should be below 250", [
+        { text: "Okay", style: "destructive" },
+      ]);
       return;
     }
     setMaxHeartRate(inputText);
@@ -126,7 +124,7 @@ const DoctorListScreen = () => {
       //const url = "http://192.168.1.3:5000";
 
       axios
-        .post(url+"/predict", {
+        .post(url + "/predict", {
           Title: "Values for prediction",
           headers: {
             "Content-Type": "application/json",
@@ -147,29 +145,45 @@ const DoctorListScreen = () => {
         })
         .then(function (response) {
           console.log(response.data.predResult.output);
-          if (response.data.predResult.output === "This Person is NOT Likely to have a Heart Disease") {
+          if (
+            response.data.predResult.output ===
+            "This Person is NOT Likely to have a Heart Disease"
+          ) {
             navigation.navigate("nohd");
             navigation.navigate("dnav");
-          } else if (response.data.predResult.output === "This Person is Likely to have a Heart Disease") {
+            setAge("");
+            setSex("");
+            setChestPainType("");
+            setRestingBP("");
+            setCholestrol("");
+            setFastingBloodSugar("");
+            setRestingECG("");
+            setMaxHeartRate("");
+            setExerciseAngina("");
+            setOldpeak("");
+            setSTSlope("");
+          } else if (
+            response.data.predResult.output ===
+            "This Person is Likely to have a Heart Disease"
+          ) {
             navigation.navigate("havehd");
             navigation.navigate("dnav");
+            setAge("");
+            setSex("");
+            setChestPainType("");
+            setRestingBP("");
+            setCholestrol("");
+            setFastingBloodSugar("");
+            setRestingECG("");
+            setMaxHeartRate("");
+            setExerciseAngina("");
+            setOldpeak("");
+            setSTSlope("");
           }
         })
         .catch(function (error) {
           navigation.navigate("error");
         });
-
-      setAge("");
-      setSex("");
-      setChestPainType("");
-      setRestingBP("");
-      setCholestrol("");
-      setFastingBloodSugar("");
-      setRestingECG("");
-      setMaxHeartRate("");
-      setExerciseAngina("");
-      setOldpeak("");
-      setSTSlope("");
     }
   };
 

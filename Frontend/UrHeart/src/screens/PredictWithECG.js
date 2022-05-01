@@ -8,11 +8,13 @@ import {
   useWindowDimensions,
   TouchableOpacity,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 
 import MENU from "../../assets/images/menu.png";
 import AdaLOGO from "../../assets/images/adaptive-logo.png";
+import complete from "../../assets/images/uploadComplete.png";
+import failed from "../../assets/images/uploadFailed.png";
 import CustomButton from "../components/CustomButton";
 
 const DoctorListScreen = () => {
@@ -22,14 +24,21 @@ const DoctorListScreen = () => {
   const buttonMargin = (height * 0.018) / 2;
 
   const navigation = useNavigation();
+  const route = useRoute();
 
   const onMenuPressed = () => {
     navigation.toggleDrawer();
   };
 
-  const onProcessPress = async () => {};
+  const onProcessPress = async () => {
+    if (responceImage !== null) {
+      navigation.navigate("ecgPred", responceImage);
+      navigation.navigate("dnav");
+      uploadStatus = null;
+    }
+  };
 
-  const url = 'http://192.168.1.3:5000';
+  const url = "http://192.168.1.3:5000";
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [responceImage, setResponceImage] = useState(null);
@@ -42,7 +51,7 @@ const DoctorListScreen = () => {
       alert("Permission to access camera roll is required!");
       return;
     }
-    
+
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       quality: 1,
@@ -57,7 +66,7 @@ const DoctorListScreen = () => {
 
     // ImagePicker saves the taken photo to disk and returns a local URI to it
     let localUri = result.uri;
-    let filename = localUri.split('/').pop();
+    let filename = localUri.split("/").pop();
 
     // Infer the type of the image
     let match = /\.(\w+)$/.exec(filename);
@@ -66,27 +75,40 @@ const DoctorListScreen = () => {
     // Upload the image using the fetch and FormData APIs
     let formData = new FormData();
     // Assume "photo" is the name of the form field the server expects
-    formData.append('file', { uri: localUri, name: filename, type });
+    formData.append("file", { uri: localUri, name: filename, type });
 
-    return await fetch( url+'/upload', {
-      method: 'POST',
+    return await fetch(url + "/upload", {
+      method: "POST",
       body: formData,
       headers: {
-        'content-type': 'multipart/form-data',
+        "content-type": "multipart/form-data",
       },
     })
-    .then((response) => response.json())
-    .then((responseJson) => {
-        console.log('response object:',responseJson)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log("response object:", responseJson);
         setResponceImage(responseJson);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+        uploadStatus = (
+          <Image
+            source={complete}
+            style={{ height: "100%", width: "100%" }}
+            resizeMode="contain"
+          />
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+        uploadStatus = (
+          <Image
+            source={failed}
+            style={{ height: "100%", width: "100%" }}
+            resizeMode="contain"
+          />
+        );
+      });
   };
 
   let image;
-
   if (selectedImage !== null) {
     image = (
       <Image
@@ -96,6 +118,29 @@ const DoctorListScreen = () => {
       />
     );
   }
+
+  let uploadStatus;
+  const setuploadStatus = (state) => {
+    if (state === "set") {
+      uploadStatus = (
+        <Image
+          source={complete}
+          style={{ height: "100%", width: "100%" }}
+          resizeMode="contain"
+        />
+      );
+    } else if (state === "fail") {
+      uploadStatus = (
+        <Image
+          source={failed}
+          style={{ height: "100%", width: "100%" }}
+          resizeMode="contain"
+        />
+      );
+    } else if (state === "null") {
+      uploadStatus = null;
+    }
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -141,9 +186,14 @@ const DoctorListScreen = () => {
                 }}
               />
               <View
-                style={{ width: "100%", height: "75%", marginVertical: 20 }}
+                style={{ width: "100%", height: "65%", marginVertical: 20 }}
               >
                 {image}
+              </View>
+              <View
+                style={{ width: "100%", height: "10%", marginVertical: 20 }}
+              >
+                {uploadStatus}
               </View>
             </View>
             <CustomButton

@@ -21,7 +21,7 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   const { height } = useWindowDimensions();
-  const cardHeight = height * 0.33;
+  const cardHeight = height * 0.35;
   const cardWidth = "47%";
 
   const onMenuPressed = () => {
@@ -65,10 +65,12 @@ const HomeScreen = () => {
         </View>
         
         <View style={[styles.main, { height: "89%" }]}>
-          <View style={[styles.top, { paddingBottom: height * 0.04 }]}>
-            <Card
+          
+        
+
+          <Card
               Text="Predict with manual data"
-              style={{ height: cardHeight, width: cardWidth, }}
+              style={{ height: cardHeight, width: "80%", marginBottom: 50 }}
               onPress={onWithDataPressed}
             >
               <Image
@@ -78,9 +80,9 @@ const HomeScreen = () => {
               />
             </Card>
 
-            <Card
+          <Card
               Text="Predict with ECG"
-              style={{ height: cardHeight, width: cardWidth }}
+              style={{ height: cardHeight, width: "80%" }}
               onPress={onWithECGPressed}
             >
               <Image
@@ -89,20 +91,6 @@ const HomeScreen = () => {
                 resizeMode="contain"
               />
             </Card>
-          </View>
-
-          <Card
-            Text="Doctors List"
-            style={{ height: cardHeight, width: "83%" }}
-            onPress={onDocListPressed}
-          >
-            <Image
-              source={ChanelDOC}
-              style={{ height: "100%", width: "100%" }}
-              resizeMode="contain"
-            />
-          </Card>
-
         </View>
       </View>
     </TouchableWithoutFeedback>

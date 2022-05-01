@@ -4,10 +4,10 @@ import { View, StyleSheet, Text, Pressable } from "react-native";
 const Card = (props) => {
   return (
     <Pressable onPress={props.onPress} style={{ ...styles.card, ...props.style }}>
-      <View style={styles.header}>
+      <View style={{...styles.header, ...props.headerHeight}}>
           <Text style={{...styles.textDecorator, ...props.textstyle}}>{props.Text}</Text>
         </View>
-        <View style={styles.footer}>{props.children}</View>
+        <View style={{...styles.footer, ...props.footerHeight}}>{props.children}</View>
     </Pressable>
   );
 };

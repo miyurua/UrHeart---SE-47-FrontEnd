@@ -1,7 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import DoctorListScreen from "../screens/DoctorListScreen";
+import HelpScreen from "../screens/HelpScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import HomeScreen from "../screens/HomeScreen";
 import DrawerContent from "../screens/DrawerContent";
@@ -10,6 +10,7 @@ import PredictWithECG from "../screens/PredictWithECG";
 import HaveDiseaseScreen from "../screens/HaveDiseaseScreen";
 import NoDiseaseScreen from "../screens/NoDiseaseScreen";
 import ErrorScreen from "../screens/ErrorScreen";
+import ECGPredResults from "../screens/ECGPredResults";
 
 const Drawer = createDrawerNavigator();
 
@@ -41,12 +42,13 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen name="MainHome" component={HomeScreen} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
-      <Drawer.Screen name="DoctorList" component={DoctorListScreen} />
+      <Drawer.Screen name="help" component={HelpScreen} />
       <Drawer.Screen name="WithData" component={PredictManualData} />
       <Drawer.Screen name="WithECG" component={PredictWithECG} />
       <Drawer.Screen name="havehd" component={HaveDiseaseScreen} />
       <Drawer.Screen name="nohd" component={NoDiseaseScreen} />
       <Drawer.Screen name="error" component={ErrorScreen} />
+      <Drawer.Screen name="ecgPred" component={ECGPredResults} />
       <Drawer.Screen name="History" component={HomeScreen} />
       <Drawer.Screen name="Settings" component={HomeScreen} />
     </Drawer.Navigator>

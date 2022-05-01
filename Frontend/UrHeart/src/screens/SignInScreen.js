@@ -32,6 +32,7 @@ const SignInScreen = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userInfo, setUserInfo] = useState("");
 
   const [emailError, setEmailError] = useState("Email");
   const [passwordError, setPasswordError] = useState("Password");
@@ -63,11 +64,14 @@ const SignInScreen = () => {
         .signInWithEmailAndPassword(email, password)
         .then(() => {
           auth.currentUser.providerData.forEach((userInfo) => {
-            name = userInfo.displayName;
-            //console.log(name+"dsf");
-            setUsername(name);
+            console.log(userInfo);
+            setUserInfo(userInfo);
           });
-          setAsyncUsername();
+          if (userInfo !== ""){
+            setAsyncUsername(userInfo.displayName);
+          }else{
+            setAsyncUsername("Welcome")
+          }
           setAsyncEmail();
           setEmail("");
           setPassword("");
@@ -79,8 +83,8 @@ const SignInScreen = () => {
     }
   };
 
-  const setAsyncUsername = async () => {
-    await AsyncStorage.setItem("UserName", username);
+  const setAsyncUsername = async (dispname) => {
+    await AsyncStorage.setItem("UserName", dispname);
   };
 
   const setAsyncEmail = async () => {
